@@ -30,23 +30,19 @@ An exemplary setup of a virtual environment containing everything needed:
 
 ### Datasets:
 Data for
-* Stanford Online Products (http://cvgl.stanford.edu/projects/lifted_struct/)
+* ETH Food-101, Vireo Food-172, ISIA Food-200
 
 
-* For Stanford Online Products:
+* For ETH Food-101:
 ```
-online_products
+food101
 └───images
-|    └───bicycle_final
-|           │   111085122871_0.jpg
+|    └───apple_pie
+|           │   134.jpg
 |    ...
-|
-└───Info_Files
-|    │   bicycle.txt
-|    │   ...
 ```
 
-Assuming your folder is placed in e.g. `<$datapath/sop>`, pass `$datapath` as input to `--source`.
+Assuming your folder is placed in e.g. `<$datapath/food>`, pass `$datapath` as input to `--source`.
 
 ### Training:
 Training is done by using `main.py` and setting the respective flags, all of which are listed and explained in `parameters.py`.
@@ -54,15 +50,15 @@ Training is done by using `main.py` and setting the respective flags, all of whi
 **A basic sample run using the best parameters would like this**:
 
 ```
-python main.py --loss PNP  --seed 0 --bs 384 --data_sampler class_random --samples_per_class 4 --arch resnet50_frozen_normalize --source ../retrieval_dataset --n_epochs 400 --lr 1e-5 --embed_dim 512 --evaluate_on_gpu --dataset online_products --variant PNP-D_q --alpha 4
+CUDA_VISIBLE_DEVICES=0 python main.py --m_loss contrastive --seed 0 --bs 112  --samples_per_class 2 --arch ours_model --source ../dataset_food --n_epochs 100 --lr 1e-6 --embed_dim 128 --evaluate_on_gpu  --dataset food101
 ```
 ## Paper
 If you find this work useful, please consider citing:
 ```
 @InProceedings{Zhuo2022,
-  author       = "Zhuo Li and Weiqing Min and Jiajun Song and Yaohui Zhu and Liping Kang and Xiaoming Wei and Xiaolin Wei and Shuqiang Jiang",
-  title        = "Rethinking the Optimization of Average Precision: Only Penalizing Negative Instances before Positive Ones is Enough",
-  booktitle    = "AAAI Conference on Artificial Intelligence (AAAI 2022)",
+  author       = "Jiajun Song and Weiqing Min and Yuxin Liu and Zhuo Li and Shuqiang Jiang and Yong Rui",
+  title        = "A Noise-robust Locality Transformer for Fine-grained Food Image Retrieval",
+  booktitle    = "Fifth IEEE International Conference on Multimedia Information Processing and Retrieval (MIPR 2022)",
   year         = "2022",
 }
 ```
