@@ -50,7 +50,7 @@ Training is done by using `main.py` and setting the respective flags, all of whi
 **A basic sample run using the best parameters would like this**:
 
 ```
-CUDA_VISIBLE_DEVICES=0 python main.py --m_loss contrastive --seed 0 --bs 112  --samples_per_class 2 --arch ours_model --source ../dataset_food --n_epochs 100 --lr 1e-6 --embed_dim 128 --evaluate_on_gpu  --dataset food101
+CUDA_VISIBLE_DEVICES=0 python main.py --m_loss margin --seed 0 --bs 112  --samples_per_class 2 --arch ours_model --source ../dataset_food --n_epochs 100 --lr 1e-6 --embed_dim 128 --evaluate_on_gpu  --dataset food101
 ```
 ## Paper
 If you find this work useful, please consider citing:
