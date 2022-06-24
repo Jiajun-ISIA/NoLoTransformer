@@ -50,5 +50,16 @@ Training is done by using `main.py` and setting the respective flags, all of whi
 **A basic sample run using the best parameters would like this**:
 
 ```
-CUDA_VISIBLE_DEVICES=0 python main.py --loss margin --m_loss softmax --seed 0 --bs 112  --samples_per_class 2 --arch ours_model vit_deit_small_patch16_224 --source ../dataset_food --n_epochs 150 --lr 1e-6 --embed_dim 128 --evaluate_on_gpu  --dataset food101 --multi_loss --pool SPoC --stable --batch_mining rho_distance --fuse 0.1
+CUDA_VISIBLE_DEVICES=0 python main.py --m_loss margin --seed 0 --bs 112  --samples_per_class 2 --arch ours_model --source ../dataset_food --n_epochs 100 --lr 1e-6 --embed_dim 128 --evaluate_on_gpu  --dataset food101
+
+```
+## Paper
+If you find this work useful, please consider citing:
+```
+@InProceedings{Jiajun2022,
+  author       = "Jiajun Song and Weiqing Min and Yuxin Liu and Zhuo Li and Shuqiang Jiang and Yong Rui",
+  title        = "A Noise-robust Locality Transformer for Fine-grained Food Image Retrieval",
+  booktitle    = "Fifth IEEE International Conference on Multimedia Information Processing and Retrieval (MIPR 2022)",
+  year         = "2022",
+}
 ```
